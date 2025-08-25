@@ -10,14 +10,14 @@ type Props = {
 const ProviderButton = ({ icon, onClick, text }: Props) => {
     return (
         <button className='w-full border border-[0.5px] py-2 rounded-md 
-        border-light-300 flex justify-center gap-4 '>
+        border-light-300 flex justify-center gap-4 cursor-pointer '>
             <Image
                 src={icon}
                 alt={icon}
                 width={30}
                 height={30}
             />
-            <p className='font-semibold text-base'>
+            <p className='font-medium text-base'>
                 {text}
             </p>
 
