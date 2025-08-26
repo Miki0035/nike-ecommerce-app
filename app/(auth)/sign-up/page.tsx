@@ -1,10 +1,16 @@
 "use client"
 import { InputField, ProviderButton } from '@/components'
-import { useFormDataStore } from '@/store/formdata'
+import { signUp } from '@/lib/auth-client'
+import { useFormDataStore } from '@/store/formDataStore'
 import Link from 'next/link'
 import React, { FormEvent } from 'react'
+import { hash } from "bcrypt"
+import { useUserStore } from '@/store/userStore'
+import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
+
+    const router = useRouter();
 
     const fullname = useFormDataStore((state) => state.fullname)
     const email = useFormDataStore((state) => state.email)
@@ -14,7 +20,16 @@ const SignUp = () => {
     const setFullname = useFormDataStore((state) => state.setFullname)
     const error = useFormDataStore((state) => state.error)
     const setError = useFormDataStore((state) => state.setError)
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+
+
+    //USER data
+
+
+
+
+
+    // HANDLE FORM SUBMIT
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!fullname || !email || !password) {
             setError("Please fill all required fields")
@@ -22,7 +37,34 @@ const SignUp = () => {
         }
         setError("")
 
+        const hashPassword = await hash(password, 10)
+
+        try {
+            const { data, error } = await signUp.email({
+                name: fullname,
+                email,
+                password: hashPassword,
+            })
+
+            if (error) {
+                setError("Error occured signing up, please try again")
+                return;
+            }
+
+            useUserStore((state) => {
+                state.setEmail(data.user.email)
+                state.setName(data.user.name)
+                state.setId(data.user.id)
+                state.setIsVerified(data.user.emailVerified)
+            })
+
+            router.push("/")
+            return;
+        } catch (error) {
+            console.error(`error signing user`, error)
+        }
     }
+
     return (
         <section className='bg-light-100 flex flex-col items-center max-w-5xl h-full w-full'>
             <div className='max-w-lg w-full h-full flex flex-col items-center justify-center gap-5'>
