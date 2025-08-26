@@ -7,7 +7,7 @@ interface User {
     id: string;
     name: string;
     avatar: string | null;
-    setEmail: (email: string) => void;
+    setUserEmail: (email: string) => void;
     setId: (id: string) => void;
     setIsVerified: (value: boolean) => void;
     setName: (value: string) => void;
@@ -19,7 +19,7 @@ export const useUserStore = create<User>((set) => ({
     id: "",
     name: "",
     avatar: null,
-    setEmail: (email) => (set({ email })),
+    setUserEmail: (email) => (set({ email })),
     setId: (id) => (set({ id })),
     setIsVerified: (value) => (set({ isVerified: value })),
     setName: (name) => (set({ name }))

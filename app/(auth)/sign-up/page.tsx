@@ -4,7 +4,7 @@ import { signUp } from '@/lib/auth-client'
 import { useFormDataStore } from '@/store/formDataStore'
 import Link from 'next/link'
 import React, { FormEvent } from 'react'
-import { hash } from "bcrypt"
+import bcrypt from "bcryptjs"
 import { useUserStore } from '@/store/userStore'
 import { useRouter } from 'next/navigation'
 
@@ -22,7 +22,12 @@ const SignUp = () => {
     const setError = useFormDataStore((state) => state.setError)
 
 
-    //USER data
+    //USER 
+    const setUserEmail = useUserStore((state) => state.setUserEmail);
+    const setName = useUserStore((state) => state.setName);
+    const setId = useUserStore((state) => state.setId);
+    const setIsVerified = useUserStore((state) => state.setIsVerified);
+
 
 
 
@@ -37,13 +42,12 @@ const SignUp = () => {
         }
         setError("")
 
-        const hashPassword = await hash(password, 10)
-
+        // const hashPassword = await bcrypt.hash(password, 10)
         try {
             const { data, error } = await signUp.email({
                 name: fullname,
                 email,
-                password: hashPassword,
+                password
             })
 
             if (error) {
@@ -51,12 +55,11 @@ const SignUp = () => {
                 return;
             }
 
-            useUserStore((state) => {
-                state.setEmail(data.user.email)
-                state.setName(data.user.name)
-                state.setId(data.user.id)
-                state.setIsVerified(data.user.emailVerified)
-            })
+            // Update Zustand state
+            setUserEmail(data.user.email);
+            setName(data.user.name);
+            setId(data.user.id);
+            setIsVerified(data.user.emailVerified);
 
             router.push("/")
             return;

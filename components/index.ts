@@ -1,2 +1,4 @@
 export { default as ProviderButton } from "./ProviderButton"
 export { default as InputField } from "./InputField"
+export { default as MobileNav } from "./MobileNav"
+export { default as Header } from "./Header"
