@@ -1,7 +1,9 @@
 interface BestAirMax {
-    id: number,
+    id: number;
+    image: string;
     name: string;
     type: "Men" | "Women" | "Kids",
     price: number,
-    colors: number
+    colors: number,
+    description: string;
 }

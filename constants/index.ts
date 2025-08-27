@@ -107,22 +107,28 @@ export const bestAirMax: BestAirMax[] = [
     {
         id: 0,
         name: "Nike Air Force 1 Mid '07",
+        image: "/best-shoe-1.png",
         type: "Men",
         price: 98.30,
-        colors: 6
+        colors: 6,
+        description: "Best seller"
     },
     {
         id: 1,
         name: "Nike Court Vision Low Next Nature",
+        image: "/best-shoe-2.png",
         type: "Men",
         price: 68.30,
         colors: 4,
+        description: "Extra 20% off"
     },
     {
         id: 2,
         name: "Nike Dunk Low Retro",
         type: "Men",
+        image: "/best-shoe-3.png",
         price: 100.25,
         colors: 6,
+        description: "Extra 10% off"
     },
 ]

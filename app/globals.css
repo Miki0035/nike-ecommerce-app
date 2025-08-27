@@ -15,6 +15,11 @@
   --color-green: #007D48;
   --color-red: #D33918;
   --color-orange: #D37918;
+  --color-purple: #E2418D;
+  --color-brown: #FB7C76;
+
+  /* gradinet color */
+  --gradient-purple-brown: linear-gradient(to right, var(--color-purple), var(--color-brown))
 
 
   /* font family */
