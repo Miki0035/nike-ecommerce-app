@@ -76,3 +76,27 @@ export const footerSocialLinks = [
         href: "#"
     }
 ]
+
+
+export const footerTermLinks = [
+    {
+        id: 0,
+        link: "Guides",
+        href: "#"
+    },
+    {
+        id: 1,
+        link: "Terms of Sale",
+        href: "#"
+    },
+    {
+        id: 2,
+        link: "Terms of Use",
+        href: "#"
+    },
+    {
+        id: 3,
+        link: "Nike Privacy Policy",
+        href: "#"
+    }
+]

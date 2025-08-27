@@ -9,7 +9,7 @@ const MobileNav = () => {
     const [showNav, setShowNav] = useState(false)
     return (
         <div className='block lg:hidden'>
-            <button onClick={() => setShowNav(!showNav)}>
+            <button onClick={() => setShowNav(!showNav)} className="cursor-pointer">
                 <Image
                     src={showNav ? "/close.svg" : "/menu.svg"}
                     alt="menu"
