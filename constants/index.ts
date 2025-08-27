@@ -100,3 +100,29 @@ export const footerTermLinks = [
         href: "#"
     }
 ]
+
+
+
+export const bestAirMax: BestAirMax[] = [
+    {
+        id: 0,
+        name: "Nike Air Force 1 Mid '07",
+        type: "Men",
+        price: 98.30,
+        colors: 6
+    },
+    {
+        id: 1,
+        name: "Nike Court Vision Low Next Nature",
+        type: "Men",
+        price: 68.30,
+        colors: 4,
+    },
+    {
+        id: 2,
+        name: "Nike Dunk Low Retro",
+        type: "Men",
+        price: 100.25,
+        colors: 6,
+    },
+]
