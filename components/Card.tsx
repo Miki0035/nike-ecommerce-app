@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
+    id: number;
     description: string;
     price: number;
     type: string;
@@ -10,10 +11,10 @@ interface Props {
     image: string;
 }
 
-const Card = ({ description, name, price, type, colors, image }: Props) => {
+const Card = ({ id, description, name, price, type, colors, image }: Props) => {
     return (
-        <Link href={"/products"} className='relative px-5 py-3 w-full sm:w-md rounded-lg flex flex-col items-start'>
-            <p className={`absolute top-7 left-10 px-2 py-2 z-40 font-semibold bg-white rounded-full ${description.startsWith("Extra") ? 'text-green' : 'text-red'}`}>
+        <Link href={`/products/${id}`} className='relative px-5 py-3 w-full sm:w-md md:w-sm  rounded-lg flex flex-col items-start'>
+            <p className={`absolute top-7 left-10 px-2 py-2 z-20 font-semibold bg-white rounded-full ${description.startsWith("Extra") ? 'text-green' : 'text-red'}`}>
                 {description}
             </p>
             <Image

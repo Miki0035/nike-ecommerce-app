@@ -4,7 +4,6 @@ import { signUp } from '@/lib/auth-client'
 import { useFormDataStore } from '@/store/formDataStore'
 import Link from 'next/link'
 import React, { FormEvent } from 'react'
-import bcrypt from "bcryptjs"
 import { useUserStore } from '@/store/userStore'
 import { useRouter } from 'next/navigation'
 

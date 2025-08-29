@@ -101,9 +101,7 @@ export const footerTermLinks = [
     }
 ]
 
-
-
-export const bestAirMax: BestAirMax[] = [
+export const bestAirMax: Shoe[] = [
     {
         id: 0,
         name: "Nike Air Force 1 Mid '07",
@@ -132,3 +130,206 @@ export const bestAirMax: BestAirMax[] = [
         description: "Extra 10% off"
     },
 ]
+
+
+
+export const allShoes: Shoe[] = [
+    {
+        id: 0,
+        name: "Nike Air Force 1 Mid '07",
+        image: "/best-shoe-1.png",
+        type: "Men",
+        price: 98.30,
+        colors: 6,
+        description: "Best seller"
+    },
+    {
+        id: 1,
+        name: "Nike Court Vision Low Next Nature",
+        image: "/best-shoe-2.png",
+        type: "Men",
+        price: 68.30,
+        colors: 4,
+        description: "Extra 20% off"
+    },
+    {
+        id: 2,
+        name: "Nike Dunk Low Retro",
+        type: "Men",
+        image: "/best-shoe-3.png",
+        price: 100.25,
+        colors: 6,
+        description: "Extra 10% off"
+    },
+    {
+        id: 3,
+        name: "Nike Air Force 1 Mid '07",
+        type: "Men",
+        image: "/shoes/shoe-1.jpg",
+        price: 100.25,
+        colors: 6,
+        description: "Extra 10% off"
+    },
+    {
+        id: 4,
+        name: "Nike Court Vision Low Next Nature",
+        type: "Men",
+        image: "/shoes/shoe-2.webp",
+        price: 98.30,
+        colors: 4,
+        description: "Extra 10% off"
+    }
+    ,
+    {
+        id: 5,
+        name: "Nike Air Force 1 PLATFORM",
+        type: "Men",
+        image: "/shoes/shoe-3.webp",
+        price: 100.25,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 6,
+        name: "Nike Dunk Low Retro",
+        type: "Men",
+        image: "/shoes/shoe-4.webp",
+        price: 100.25,
+        colors: 6,
+        description: "Extra 10% off"
+    },
+    {
+        id: 7,
+        name: "Nike Air Max SYSTM",
+        type: "Men",
+        image: "/shoes/shoe-5.avif",
+        price: 98.30,
+        colors: 4,
+        description: "Extra 10% off"
+    },
+    {
+        id: 8,
+        name: "Nike Air Force 1 PLATFORM",
+        type: "Men",
+        image: "/shoes/shoe-6.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 9,
+        name: "Nike Dunk Low Retro SE",
+        type: "Men",
+        image: "/shoes/shoe-7.avif",
+        price: 98.30,
+        colors: 6,
+        description: "Extra 10% off"
+    },
+    {
+        id: 10,
+        name: "Nike Air Max 90 SE",
+        type: "Men",
+        image: "/shoes/shoe-8.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 11,
+        name: "Nike Legend Essential 3 Next Nature",
+        type: "Men",
+        image: "/shoes/shoe-9.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 12,
+        name: "Nike SB Zoom Janoski OG+",
+        type: "Men",
+        image: "/shoes/shoe-10.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 13,
+        name: "Nike SB Zoom Janoski OG+",
+        type: "Men",
+        image: "/shoes/shoe-11.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 14,
+        name: "Nike SB Zoom Janoski OG+",
+        type: "Men",
+        image: "/shoes/shoe-12.avif",
+        price: 98.30,
+        colors: 4,
+        description: "Extra 10% off"
+    },
+    {
+        id: 15,
+        name: "Nike SB Zoom Janoski OG+",
+        type: "Men",
+        image: "/shoes/shoe-13.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    },
+    {
+        id: 16,
+        name: "Nike SB Zoom Janoski OG+",
+        type: "Men",
+        image: "/shoes/shoe-14.avif",
+        price: 98.30,
+        colors: 4,
+        description: "Extra 10% off"
+    },
+    {
+        id: 17,
+        name: "Nike SB Zoom Janoski OG+",
+        type: "Men",
+        image: "/shoes/shoe-15.avif",
+        price: 98.30,
+        colors: 1,
+        description: "Extra 10% off"
+    }
+]
+
+export const sideNav = [
+    {
+        label: "Gender",
+        options: ["Men", "Women", "Unisex"]
+    },
+    {
+        label: "Kids",
+        options: ["Boys", "Girls"]
+    },
+    {
+        label: "Sports",
+        options: ["Lifestyle", "Skateboarding", "Dance"]
+    },
+]
+
+export const sideNavPrice = {
+    label: "Shoe By Price",
+    options: [
+        {
+            startingPrice: 25,
+            endingPrice: 50,
+        }, {
+            startingPrice: 50,
+            endingPrice: 100,
+        },
+        {
+            startingPrice: 100,
+            endingPrice: 150,
+        },
+        {
+            startingPrice: 150,
+        },
+    ]
+}

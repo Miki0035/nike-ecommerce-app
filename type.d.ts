@@ -1,4 +1,4 @@
-interface BestAirMax {
+interface Shoe {
     id: number;
     image: string;
     name: string;
@@ -7,3 +7,5 @@ interface BestAirMax {
     colors: number,
     description: string;
 }
+
+

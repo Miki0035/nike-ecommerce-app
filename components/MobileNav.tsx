@@ -20,7 +20,7 @@ const MobileNav = () => {
             {
                 showNav && (
 
-                    <div className='absolute bg-light-100 z-30 w-full top-20 left-0 px-12'>
+                    <div className='absolute bg-light-100 z-50 w-full top-20 left-0 px-12'>
                         <nav>
                             <ul className="w-full flex flex-col items-start gap-5">
                                 {
