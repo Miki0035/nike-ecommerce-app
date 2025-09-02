@@ -11,7 +11,7 @@ export const navButtons = [
     {
         id: 1,
         link: "My Cart",
-        href: "/cart"
+        href: "/profile"
     }
 ]
 

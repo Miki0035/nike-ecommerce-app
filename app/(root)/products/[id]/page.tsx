@@ -1,39 +1,42 @@
-import { allShoes } from '@/constants'
+import { allShoes, bestAirMax } from '@/constants'
 import { Heart, Star } from 'lucide-react';
 import React from 'react'
 import Image from "next/image"
-import { CardImage } from '@/components';
+import { Card, CardImage, Headline } from '@/components';
+
 interface Props {
-    id: string
+    params: {
+        id: string
+    }
 }
-const ProductDetail = async ({ params }: { params: Props }) => {
+const ProductDetail = async ({ params }: Props) => {
     const { id } = params
     const shoe = allShoes.find(shoe => shoe.id === Number(id))
-    if (!shoe) return (<main> No Product Found</main>)
+    if (!shoe) return (<main className='w-full max-w-[1444px] mx-auto h-full'> No Product Found</main>)
 
     const { name, price, description, type, image } = shoe
 
     return (
-        <main className='w-full h-full'>
-            <section className='w-full flex flex-col items-center px-3 lg:grid lg:grid-cols-2 lg:place-items-start'>
+        <main className='w-full max-w-[1444px] mx-auto h-full'>
+            <section className='w-full flex flex-col items-center px-3 lg:grid lg:grid-cols-2 lg:auto-rows-3 lg:place-items-start lg:gap-2'>
 
                 {/* shoe description */}
-                <article className='w-full  flex flex-col items-start gap-3 py-4 lg:col-2 '>
-                    <h4 className='font-semibold text-lg'>{name}</h4>
-                    <h5 className='text-dark-500 text-md'>{type}'s Shoes</h5>
+                <article className='w-full max-w-lg flex flex-col  items-start gap-3 py-4 lg:col-start-2 lg:row-start-1 '>
+                    <h4 className='font-semibold  text-2xl'>{name}</h4>
+                    <h5 className='text-dark-500 text-lg'>{type}'s Shoes</h5>
                     <p className='flex flex-col items-start gap-2'>
-                        <span className='text-2xl font-semibold'>${price}</span>
-                        <span className={`font-semibold ${description.startsWith("Extra") ? 'text-green' : 'text-red'}`}>{description}</span>
+                        <span className='font-semibold text-3xl'>${price}</span>
+                        <span className={`font-semibold text-lg ${description.startsWith("Extra") ? 'text-green' : 'text-red'}`}>{description}</span>
                     </p>
                 </article>
 
                 {/* shoe image with side images */}
-                <article className='w-full flex justify-center  lg:col-1 lg:row-1'>
+                <article className='w-full  flex justify-center   lg:col-start-1 lg:row-start-2'>
                     <CardImage name={name} image={image} description={description} />
                 </article>
 
                 {/* shoe different sizes with buttons */}
-                <article className='w-full py-4 max-w-lg lg:col-2 lg:row-2'>
+                <article className='w-full py-4 max-w-lg lg:col-start-2  lg:row-start-2'>
                     <div className='w-full flex justify-between py-4'>
                         <p className='text-md font-medium'>Select Size</p>
                         <p className='text-md font-medium'>Size Guide</p>
@@ -102,6 +105,25 @@ const ProductDetail = async ({ params }: { params: Props }) => {
 
                 </article>
 
+            </section>
+
+            <section className='w-full h-full'>
+                <Headline headline='You Might Also Like' />
+                <article className='w-full flex flex-col items-center lg:flex-row lg:justify-center gap-10'>
+                    {
+                        bestAirMax.map(({ id, description, name, image, price, type, colors }, _) => (
+                            <Card
+                                id={id}
+                                key={id}
+                                description={description}
+                                name={name}
+                                price={price}
+                                type={type}
+                                colors={colors}
+                                image={image} />
+                        ))
+                    }
+                </article>
             </section>
 
         </main>

@@ -28,9 +28,11 @@ const Page = () => {
           </Link>
         </article>
       </section>
+
+      {/* Best of Air Max */}
       <section className='w-full h-full'>
         <Headline headline='Best of Air Max' />
-        <article className='w-full flex flex-col items-center lg:flex-row gap-10'>
+        <article className='w-full flex flex-col items-center lg:flex-row  gap-10 lg:justify-center'>
           {
             bestAirMax.map(({ id, description, name, image, price, type, colors }, index) => (
               <Card
