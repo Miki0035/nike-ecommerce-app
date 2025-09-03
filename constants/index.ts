@@ -333,3 +333,16 @@ export const sideNavPrice = {
         },
     ]
 }
+
+export const profileNav = [
+    {
+        id: 0,
+        link: "My Orders",
+        href: "/profile/orders"
+    },
+    {
+        id: 1,
+        link: "Favorites",
+        href: "/profile/favorites"
+    },
+]
