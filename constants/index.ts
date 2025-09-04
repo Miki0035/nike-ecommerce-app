@@ -1,17 +1,41 @@
 export const navLinks = [
-    "Men", "Women", "Kids", "Collections", "Contact"
+    {
+        id: 0,
+        link: "Men",
+        href: "/products"
+    },
+    {
+        id: 1,
+        link: "Women",
+        href: "/products"
+    },
+    {
+        id: 2,
+        link: "Kids",
+        href: "/products"
+    },
+    {
+        id: 3,
+        link: "Collections",
+        href: "/products"
+    },
+    {
+        id: 4,
+        link: "Profile",
+        href: "/profile/orders"
+    },
 ]
 
 export const navButtons = [
     {
         id: 0,
         link: "Search",
-        href: "/search"
+        href: "/products"
     },
     {
         id: 1,
         link: "My Cart",
-        href: "/profile"
+    href: "/profile/orders"
     }
 ]
 
@@ -346,3 +370,5 @@ export const profileNav = [
         href: "/profile/favorites"
     },
 ]
+
+export const shoeSizes = [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]

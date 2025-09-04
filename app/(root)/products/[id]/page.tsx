@@ -1,20 +1,44 @@
-import { allShoes, bestAirMax } from '@/constants'
+"use client"
+import { allShoes, bestAirMax, shoeSizes } from '@/constants'
 import { Heart, Star } from 'lucide-react';
-import React from 'react'
+import React, { useState } from 'react'
 import Image from "next/image"
 import { Card, CardImage, Headline } from '@/components';
+import { useOrderStore } from '@/store/cart';
+import { useFavoriteStore } from '@/store/favorite';
+import { useParams } from 'next/navigation';
+import toast from 'react-hot-toast';
 
-interface Props {
-    params: {
-        id: string
-    }
-}
-const ProductDetail = async ({ params }: Props) => {
-    const { id } = params
-    const shoe = allShoes.find(shoe => shoe.id === Number(id))
+const ProductDetail = () => {
+
+    const params = useParams<{ id: string }>()
+
+    const shoe = allShoes.find(shoe => shoe.id === Number(params.id))
+    const [size, setSize] = useState(0)
+
+
     if (!shoe) return (<main className='w-full max-w-[1444px] mx-auto h-full'> No Product Found</main>)
 
     const { name, price, description, type, image } = shoe
+
+    const { addOrder, orders } = useOrderStore()
+    const { addFavorite, favorites } = useFavoriteStore()
+
+    
+    const handleAddOrder = (shoe: Shoe) => {
+        addOrder({
+            shoe, size,
+            quantity: 1
+        });
+        toast.success(`${shoe.name} added to cart 🛒`)
+    }
+
+    const handleAddFavorite = (shoe: Shoe) => {
+        addFavorite(shoe)
+        toast.success(`${shoe.name} added to favorites ❤`)
+
+    }
+
 
     return (
         <main className='w-full max-w-[1444px] mx-auto h-full'>
@@ -43,8 +67,8 @@ const ProductDetail = async ({ params }: Props) => {
                     </div>
                     <div className='w-full grid grid-cols-5 gap-3'>
                         {
-                            Array.from({ length: 13 },).map((_, index) => (
-                                <button key={index} className='border-[0.5px] border-light-400 rounded-md px-2 py-2 cursor-pointer'>
+                            shoeSizes.map((value, index) => (
+                                <button onClick={() => setSize(value)} key={index} className={`border-[0.5px] ${size === value ? 'bg-dark-900 text-light-100' : 'bg-white text-dark-900'} border-light-400 rounded-md px-2 py-2 cursor-pointer`}>
                                     {index}
                                 </button>
                             ))
@@ -54,10 +78,12 @@ const ProductDetail = async ({ params }: Props) => {
                     </div>
 
                     <div className='w-full max-w-md mx-auto flex flex-col gap-4 my-5'>
-                        <button className='bg-dark-900 text-center text-white rounded-full py-4 cursor-pointer'>
+                        <button onClick={() => handleAddOrder(
+                            shoe,
+                        )} className='bg-dark-900 text-center text-white rounded-full py-4 cursor-pointer'>
                             Add to Bag
                         </button>
-                        <button className='bg-white flex justify-center gap-2 cursor-pointer text-dark-900 rounded-full font-semibold py-4 border-[0.5px] border-light-400'>
+                        <button onClick={() => handleAddFavorite(shoe)} className='bg-white flex justify-center gap-2 cursor-pointer text-dark-900 rounded-full font-semibold py-4 border-[0.5px] border-light-400'>
                             <Heart />
                             Favorite
                         </button>

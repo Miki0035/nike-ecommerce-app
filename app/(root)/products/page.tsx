@@ -8,6 +8,11 @@ const Products = () => {
 
     const [showPriceFilter, setShowPriceFilter] = useState(true)
 
+    const [gender, setGender] = useState("")
+    const [kids, setKids] = useState("")
+    const [price, setPrice] = useState(0)
+    const [kind, setKind] = useState("")
+
     return (
         <main className='w-full h-full max-w-[1444px] mx-auto'>
             <section className='w-full flex justify-between items-center'>
@@ -25,7 +30,7 @@ const Products = () => {
                 <aside className='hidden w-full px-7  max-w-[250px] lg:flex flex-col w-full gap-5 items-start '>
                     {
                         sideNav.slice(0, 2).map(({ label, options }, index) => (
-                            <FilterOption key={index} label={label} options={options} borderStyle={index === 0 ? 'border-y-[0.5px]' : 'border-b-[0.5px]'} />
+                            <FilterOption   key={index} label={label} options={options} borderStyle={index === 0 ? 'border-y-[0.5px]' : 'border-b-[0.5px]'} />
                         ))
                     }
 

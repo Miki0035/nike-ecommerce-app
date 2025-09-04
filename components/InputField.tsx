@@ -1,5 +1,5 @@
 "use client"
-import { useFormDataStore } from '@/store/formDataStore'
+import { useFormDataStore } from '@/store/formData'
 import Image from 'next/image'
 import React from 'react'
 

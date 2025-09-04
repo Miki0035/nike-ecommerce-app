@@ -24,9 +24,9 @@ const MobileNav = () => {
                         <nav>
                             <ul className="w-full flex flex-col items-start gap-5">
                                 {
-                                    navLinks.map((link, index) => (
-                                        <li key={index}>
-                                            <Link href={"/products"} className='text-lg'>
+                                    navLinks.map(({ link, href }, index) => (
+                                        <li onClick={() => setShowNav(!showNav)} key={index} className="cursor-pointer">
+                                            <Link href={href} className='text-lg'>
                                                 {link}
                                             </Link>
                                         </li>

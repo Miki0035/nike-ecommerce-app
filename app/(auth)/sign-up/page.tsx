@@ -1,10 +1,10 @@
 "use client"
 import { InputField, ProviderButton } from '@/components'
 import { signUp } from '@/lib/auth-client'
-import { useFormDataStore } from '@/store/formDataStore'
+import { useFormDataStore } from '@/store/formData'
 import Link from 'next/link'
 import React, { FormEvent } from 'react'
-import { useUserStore } from '@/store/userStore'
+import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
