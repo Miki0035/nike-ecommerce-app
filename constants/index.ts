@@ -179,7 +179,7 @@ export const allShoes: Shoe[] = [
     {
         id: 2,
         name: "Nike Dunk Low Retro",
-        type: "Men",
+        type: "Women",
         image: "/best-shoe-3.png",
         price: 100.25,
         colors: 6,
@@ -188,7 +188,7 @@ export const allShoes: Shoe[] = [
     {
         id: 3,
         name: "Nike Air Force 1 Mid '07",
-        type: "Men",
+        type: "Kids",
         image: "/shoes/shoe-1.jpg",
         price: 100.25,
         colors: 6,
@@ -216,7 +216,7 @@ export const allShoes: Shoe[] = [
     {
         id: 6,
         name: "Nike Dunk Low Retro",
-        type: "Men",
+        type: "Women",
         image: "/shoes/shoe-4.webp",
         price: 100.25,
         colors: 6,
@@ -243,7 +243,7 @@ export const allShoes: Shoe[] = [
     {
         id: 9,
         name: "Nike Dunk Low Retro SE",
-        type: "Men",
+        type: "Kids",
         image: "/shoes/shoe-7.avif",
         price: 98.30,
         colors: 6,
@@ -279,7 +279,7 @@ export const allShoes: Shoe[] = [
     {
         id: 13,
         name: "Nike SB Zoom Janoski OG+",
-        type: "Men",
+        type: "Women",
         image: "/shoes/shoe-11.avif",
         price: 98.30,
         colors: 1,
@@ -297,7 +297,7 @@ export const allShoes: Shoe[] = [
     {
         id: 15,
         name: "Nike SB Zoom Janoski OG+",
-        type: "Men",
+        type: "Women",
         image: "/shoes/shoe-13.avif",
         price: 98.30,
         colors: 1,
@@ -306,7 +306,7 @@ export const allShoes: Shoe[] = [
     {
         id: 16,
         name: "Nike SB Zoom Janoski OG+",
-        type: "Men",
+        type: "Women",
         image: "/shoes/shoe-14.avif",
         price: 98.30,
         colors: 4,

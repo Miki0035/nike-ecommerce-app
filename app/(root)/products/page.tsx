@@ -2,17 +2,24 @@
 import { Card, FilterOption, Headline, MobileSideNav } from '@/components'
 import { allShoes, sideNav, sideNavPrice } from '@/constants'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 const Products = () => {
 
     const [showPriceFilter, setShowPriceFilter] = useState(true)
 
-    const [gender, setGender] = useState("")
-    const [kids, setKids] = useState("")
-    const [price, setPrice] = useState(0)
-    const [kind, setKind] = useState("")
+    const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
+    const handleFilterChange = (value: string, checked: boolean) => {
+        setSelectedFilters((prev) => checked ? [...prev, value] : prev.filter((v) => v !== value))
+    }
+
+    const filteredItems = useMemo(() => {
+        if (selectedFilters.length === 0) return allShoes
+        return allShoes.filter((item) => selectedFilters.includes(item.type))
+    }, [selectedFilters])
+    
+    console.log('selected filters from page', selectedFilters)
     return (
         <main className='w-full h-full max-w-[1444px] mx-auto'>
             <section className='w-full flex justify-between items-center'>
@@ -30,7 +37,7 @@ const Products = () => {
                 <aside className='hidden w-full px-7  max-w-[250px] lg:flex flex-col w-full gap-5 items-start '>
                     {
                         sideNav.slice(0, 2).map(({ label, options }, index) => (
-                            <FilterOption   key={index} label={label} options={options} borderStyle={index === 0 ? 'border-y-[0.5px]' : 'border-b-[0.5px]'} />
+                            <FilterOption selected={selectedFilters} onChange={handleFilterChange} key={index} label={label} options={options} borderStyle={index === 0 ? 'border-y-[0.5px]' : 'border-b-[0.5px]'} />
                         ))
                     }
 
@@ -70,14 +77,14 @@ const Products = () => {
                     }
                     {
                         sideNav.slice(-1).map(({ label, options }, index) => (
-                            <FilterOption key={index} label={label} options={options} borderStyle={'border-none'} />
+                            <FilterOption selected={selectedFilters} onChange={handleFilterChange} key={index} label={label} options={options} borderStyle={'border-none'} />
                         ))
                     }
                 </aside>
                 {/* Product Grid */}
                 <aside className='w-full max-w-7xl grid grid-cols-1 place-items-center py-4  md:grid-cols-2 xl:grid-cols-3 '>
                     {
-                        allShoes.map(({ id, description, name, image, price, type, colors }) => (
+                        filteredItems.map(({ id, description, name, image, price, type, colors }) => (
                             <Card
                                 key={id}
                                 id={id}

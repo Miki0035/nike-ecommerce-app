@@ -6,9 +6,14 @@ interface Props {
     borderStyle: string;
     label: string;
     options: string[];
+    selected?: string[];
+    onChange: (value: string, checked: boolean) => void;
+
+
 }
 
-const FilterOption = ({ borderStyle, label, options }: Props) => {
+const FilterOption = ({ borderStyle, label, options, selected, onChange }: Props) => {
+    console.log('selected filters', selected)
     const [show, setShow] = useState(true)
     return (
         <div className={`w-full flex flex-col items-start gap-3  border-light-400 ${borderStyle} py-5`}>
@@ -27,7 +32,9 @@ const FilterOption = ({ borderStyle, label, options }: Props) => {
                 {
                     options.map((option, index) => (
                         <li key={index} className='flex gap-3 items-center'>
-                            <input className='w-4 h-4' type='checkbox' value={option} /> <span className='capitalise text-md'>{option} </span>
+                            <input className='w-4 h-4' type='checkbox' checked={selected?.includes(option)} value={option}
+                                onChange={(e) => onChange(option, e.target.checked)}
+                            /> <span className='capitalise text-md'>{option} </span>
                         </li>
                     ))
                 }
