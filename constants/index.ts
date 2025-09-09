@@ -26,18 +26,7 @@ export const navLinks = [
     },
 ]
 
-export const navButtons = [
-    {
-        id: 0,
-        link: "Search",
-        href: "/products"
-    },
-    {
-        id: 1,
-        link: "My Cart",
-    href: "/profile/orders"
-    }
-]
+
 
 
 export const gridNavs = [
@@ -188,7 +177,7 @@ export const allShoes: Shoe[] = [
     {
         id: 3,
         name: "Nike Air Force 1 Mid '07",
-        type: "Kids",
+        type: "Boys",
         image: "/shoes/shoe-1.jpg",
         price: 100.25,
         colors: 6,
@@ -197,7 +186,7 @@ export const allShoes: Shoe[] = [
     {
         id: 4,
         name: "Nike Court Vision Low Next Nature",
-        type: "Men",
+        type: "Girls",
         image: "/shoes/shoe-2.webp",
         price: 98.30,
         colors: 4,
@@ -243,7 +232,7 @@ export const allShoes: Shoe[] = [
     {
         id: 9,
         name: "Nike Dunk Low Retro SE",
-        type: "Kids",
+        type: "Dance",
         image: "/shoes/shoe-7.avif",
         price: 98.30,
         colors: 6,
@@ -317,7 +306,7 @@ export const allShoes: Shoe[] = [
         name: "Nike SB Zoom Janoski OG+",
         type: "Men",
         image: "/shoes/shoe-15.avif",
-        price: 98.30,
+        price: 200.99,
         colors: 1,
         description: "Extra 10% off"
     }

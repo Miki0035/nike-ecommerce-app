@@ -9,25 +9,55 @@ const Products = () => {
     const [showPriceFilter, setShowPriceFilter] = useState(true)
 
     const [selectedFilters, setSelectedFilters] = useState<string[]>([])
+    const [selectedPriceRange, setSelectedPriceRange] = useState<{ min: number; max: number }[]>([])
 
     const handleFilterChange = (value: string, checked: boolean) => {
         setSelectedFilters((prev) => checked ? [...prev, value] : prev.filter((v) => v !== value))
     }
 
+    const handlePriceFilterChange = (startingPrice: number, endingPrice: number | null, checked: boolean) => {
+        if (checked) {
+            // Add the range
+            setSelectedPriceRange((prev) => [
+                ...prev,
+                { min: startingPrice, max: endingPrice ?? Infinity },
+            ]);
+        } else {
+            // Remove the range
+            setSelectedPriceRange((prev) =>
+                prev.filter(
+                    (range) =>
+                        range.min !== startingPrice || range.max !== (endingPrice ?? Infinity)
+                )
+            );
+        }
+    }
+
     const filteredItems = useMemo(() => {
-        if (selectedFilters.length === 0) return allShoes
-        return allShoes.filter((item) => selectedFilters.includes(item.type))
-    }, [selectedFilters])
-    
+        return allShoes.filter((item) => {
+            // type filter
+            const matchesType =
+                selectedFilters.length === 0 || selectedFilters.includes(item.type);
+
+            // price filter
+            const matchesPrice =
+                selectedPriceRange.length === 0 ||
+                selectedPriceRange.some(
+                    (range) => item.price >= range.min && item.price <= range.max);
+
+            return matchesType && matchesPrice;
+        });
+    }, [selectedFilters, selectedPriceRange, allShoes])
+
     console.log('selected filters from page', selectedFilters)
     return (
         <main className='w-full h-full max-w-[1444px] mx-auto'>
             <section className='w-full flex justify-between items-center'>
                 <Headline headline='New (500)' />
-                <div className='hidden lg:flex gap-5'>
+                {/* <div className='hidden lg:flex gap-5'>
                     <button>Hide Filters</button>
                     <button>Sort By</button>
-                </div>
+                </div> */}
             </section>
             {/* SideNav */}
             <section className='relative w-full flex gap-5'>
@@ -56,20 +86,30 @@ const Products = () => {
 
 
                             </div>
+                            {/* Price Filters */}
                             <ul className={`${showPriceFilter ? 'flex' : 'hidden'} flex-col items-start gap-4`}>
                                 {
-                                    sideNavPrice.options.map(({ startingPrice, endingPrice }, index) => (
-                                        <li key={index} className='flex gap-3 items-center'>
-                                            <input className='w-4 h-4' type='checkbox' value={startingPrice} />
-                                            {
-                                                index === sideNavPrice.options.length - 1 ? (
-                                                    <span className='capitalise text-md'> Over  ${startingPrice} </span>
-                                                ) : (
-                                                    <span className='capitalise text-md'> ${startingPrice} - ${endingPrice} </span>
-                                                )
-                                            }
-                                        </li>
-                                    ))
+                                    sideNavPrice.options.map(({ startingPrice, endingPrice }, index) => {
+                                        const isChecked = selectedPriceRange.some(
+                                            (range) =>
+                                                range.min === startingPrice &&
+                                                range.max === (endingPrice ?? Infinity)
+                                        );
+                                        return (
+                                            <li key={index} className='flex gap-3 items-center'>
+                                                <input className='w-4 h-4' type='checkbox' value={startingPrice} checked={isChecked}
+                                                    onChange={(e) => handlePriceFilterChange(startingPrice, endingPrice ?? null, e.target.checked)}
+                                                />
+                                                {
+                                                    index === sideNavPrice.options.length - 1 ? (
+                                                        <span className='capitalise text-md'> Over  ${startingPrice} </span>
+                                                    ) : (
+                                                        <span className='capitalise text-md'> ${startingPrice} - ${endingPrice} </span>
+                                                    )
+                                                }
+                                            </li>
+                                        )
+                                    })
                                 }
 
                             </ul>
@@ -82,22 +122,33 @@ const Products = () => {
                     }
                 </aside>
                 {/* Product Grid */}
-                <aside className='w-full max-w-7xl grid grid-cols-1 place-items-center py-4  md:grid-cols-2 xl:grid-cols-3 '>
-                    {
-                        filteredItems.map(({ id, description, name, image, price, type, colors }) => (
-                            <Card
-                                key={id}
-                                id={id}
-                                description={description}
-                                name={name}
-                                price={price}
-                                type={type}
-                                colors={colors}
-                                image={image} />
-                        ))
-                    }
+                {
+                    filteredItems.length <= 0 ?
+                        (
+                            <div className='flex justify-center mx-auto items-start text-lg '>
+                                Oops! no items found , please adjust your filters
 
-                </aside>
+                            </div>
+                        )
+                        :
+                        <aside className='w-full max-w-7xl grid grid-cols-1 place-items-center py-4  md:grid-cols-2 xl:grid-cols-3 '>
+                            {
+
+                                filteredItems.map(({ id, description, name, image, price, type, colors }) => (
+                                    <Card
+                                        key={id}
+                                        id={id}
+                                        description={description}
+                                        name={name}
+                                        price={price}
+                                        type={type}
+                                        colors={colors}
+                                        image={image} />
+                                ))
+                            }
+
+                        </aside>
+                }
             </section>
 
 

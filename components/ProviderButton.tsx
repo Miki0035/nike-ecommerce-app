@@ -1,15 +1,32 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
+import { signIn } from '@/lib/auth-client';
 
 type Props = {
     icon: string;
-    onClick: () => void;
-    text: string
+    text: string;
+    provider: string;
 }
 
-const ProviderButton = ({ icon, onClick, text }: Props) => {
+const ProviderButton = ({ icon, text, provider }: Props) => {
+    const handleSignInProvider = async (provider: string) => {
+        console.log(provider, 'provider sign in')
+        try {
+            await signIn.social({
+                provider,
+                callbackURL: "/products"
+            })
+        } catch (error) {
+            console.error(`error signing user with`, provider, error)
+
+        }
+    }
+
     return (
-        <button className='w-full border border-[0.5px] py-2 rounded-md 
+        <button
+            onClick={() => handleSignInProvider(provider)}
+            className='w-full border border-[0.5px] py-2 rounded-md 
         border-light-300 flex justify-center gap-4 cursor-pointer '>
             <Image
                 src={icon}

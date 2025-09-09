@@ -1,6 +1,6 @@
 "use client"
 import { InputField, ProviderButton } from '@/components'
-import { signUp } from '@/lib/auth-client'
+import { signIn, signUp } from '@/lib/auth-client'
 import { useFormDataStore } from '@/store/formData'
 import Link from 'next/link'
 import React, { FormEvent } from 'react'
@@ -26,8 +26,6 @@ const SignUp = () => {
     const setName = useUserStore((state) => state.setName);
     const setId = useUserStore((state) => state.setId);
     const setIsVerified = useUserStore((state) => state.setIsVerified);
-
-
 
 
 
@@ -67,6 +65,8 @@ const SignUp = () => {
         }
     }
 
+
+
     return (
         <section className='bg-light-100 flex flex-col items-center max-w-5xl h-full w-full'>
             <div className='max-w-lg w-full h-full flex flex-col items-center justify-center gap-5'>
@@ -82,14 +82,14 @@ const SignUp = () => {
                 </h2>
                 <div className='flex flex-col w-full gap-5'>
                     <ProviderButton
-                        onClick={() => { }}
+                        provider="google"
                         text='Continue with Google'
                         icon='/google.svg'
                     />
                     <ProviderButton
-                        onClick={() => { }}
-                        text='Continue with X'
-                        icon='/x.svg'
+                        provider="github"
+                        text='Continue with Github'
+                        icon='/github.svg'
                     />
                 </div>
                 <div className='flex items-center gap-4 w-full font-light'>

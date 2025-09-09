@@ -1,12 +1,31 @@
 "use client"
 
-import { navButtons, navLinks } from "@/constants"
+import { navLinks } from "@/constants"
+import { useSession, signOut } from "@/lib/auth-client"
+import { useOrderStore } from "@/store/cart"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 const MobileNav = () => {
+    const router = useRouter()
     const [showNav, setShowNav] = useState(false)
+    const { orders } = useOrderStore()
+
+    const { data: session } = useSession()
+
+
+
+    const handleSignout = async () => {
+        await signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push("/")
+                }
+            }
+        });
+    }
     return (
         <div className='block lg:hidden'>
             <button onClick={() => setShowNav(!showNav)} className="cursor-pointer">
@@ -33,15 +52,19 @@ const MobileNav = () => {
                                     ))
                                 }
                                 <div className="w-full flex justify-between items-center">
-                                    {
-                                        navButtons.map(({ id, link, href }) => (
-                                            <li key={id}>
-                                                <Link href={href} className='text-lg'>
-                                                    {link}
-                                                </Link>
-                                            </li>
-                                        ))
-                                    }
+                                    <li>
+                                        <button onClick={handleSignout} className='text-lg'>
+                                            {session && "Logout"}
+                                        </button>
+                                    </li>
+                                    <li >
+                                        <Link href="/profile/orders" className='text-lg'>
+                                            My Cart
+                                            {
+                                                (<span>({orders.length})</span>)
+                                            }
+                                        </Link>
+                                    </li>
 
                                 </div>
                             </ul>

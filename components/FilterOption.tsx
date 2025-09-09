@@ -13,7 +13,6 @@ interface Props {
 }
 
 const FilterOption = ({ borderStyle, label, options, selected, onChange }: Props) => {
-    console.log('selected filters', selected)
     const [show, setShow] = useState(true)
     return (
         <div className={`w-full flex flex-col items-start gap-3  border-light-400 ${borderStyle} py-5`}>

@@ -42,7 +42,7 @@ const OrderCard = ({ id, image, estimatedArrival, name, price, type, size, quant
 
             <div className='flex w-full items-center justify-between gap-10 md:w-50 md:flex-col md:justify-center'>
                 <p className='font-semibold text-2xl'>${price}</p>
-                <button className='font-bold text-lg text-red flex gap-3 justify-center items-center' onClick={() => removeOrder(id)}> <Trash2 color='#D33918' size={20} /> Cancel Order</button>
+                <button className='font-bold text-lg text-red flex gap-3 justify-center items-center cursor-pointer' onClick={() => removeOrder(id)}> <Trash2 color='#D33918' size={20} /> Cancel Order</button>
             </div>
 
         </div>

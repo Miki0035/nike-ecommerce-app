@@ -2,7 +2,7 @@ interface Shoe {
     id: number;
     image: string;
     name: string;
-    type: "Men" | "Women" | "Kids",
+    type: "Men" | "Women" | "Unisex" | "Boys" | "Girls" | "Lifestyle" | "Skateboarding" | "Dance",
     price: number,
     colors: number,
     description: string;

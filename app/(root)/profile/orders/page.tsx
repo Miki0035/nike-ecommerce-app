@@ -5,10 +5,9 @@ import { useOrderStore } from '@/store/cart'
 const Order = () => {
 
     const { orders } = useOrderStore()
-    console.log(`orders: ${orders}`)
     return (
         <div className='w-full h-full'>
-            <div className='flex flex-col gap-4 md:flex-row md:justify-between'>
+            <div className='flex flex-col gap-4 '>
                 {
                     orders.length <= 0 ? (
                         <div>
