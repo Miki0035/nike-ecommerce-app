@@ -3,6 +3,7 @@
 import { navLinks } from "@/constants"
 import { useSession, signOut } from "@/lib/auth-client"
 import { useOrderStore } from "@/store/cart"
+import { LogOut } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -39,26 +40,26 @@ const MobileNav = () => {
             {
                 showNav && (
 
-                    <div className='absolute bg-light-100 z-50 w-full top-20 left-0 px-12'>
+                    <div className='absolute bg-light-100 z-50 w-full top-20 left-0 px-12 shadow-lg py-3'>
                         <nav>
                             <ul className="w-full flex flex-col items-start gap-5">
                                 {
                                     navLinks.map(({ link, href }, index) => (
-                                        <li onClick={() => setShowNav(!showNav)} key={index} className="cursor-pointer">
-                                            <Link href={href} className='text-lg'>
+                                        <Link href={href} key={index} className='text-lg w-full cursor-pointer py-2 px-3 rounded-lg duration-300 hover:bg-dark-900 hover:text-light-100'>
+                                            <li onClick={() => setShowNav(!showNav)}>
                                                 {link}
-                                            </Link>
-                                        </li>
+                                            </li>
+                                        </Link>
                                     ))
                                 }
-                                <div className="w-full flex justify-between items-center">
+                                <div className="w-full flex justify-between items-center px-3">
                                     <li>
-                                        <button onClick={handleSignout} className='text-lg'>
-                                            {session && "Logout"}
+                                        <button onClick={handleSignout} className='text-lg cursor-pointer'>
+                                            {session && <LogOut />}
                                         </button>
                                     </li>
                                     <li >
-                                        <Link href="/profile/orders" className='text-lg'>
+                                        <Link href="/carts" className='text-lg' onClick={() => setShowNav(!showNav)}>
                                             My Cart
                                             {
                                                 (<span>({orders.length})</span>)

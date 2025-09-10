@@ -61,7 +61,12 @@ const Products = () => {
             {/* SideNav */}
             <section className='relative w-full flex gap-5'>
                 {/* SMALL SCREEN NAV */}
-                <MobileSideNav />
+                <MobileSideNav
+                    selectedFilters={selectedFilters}
+                    handleFilterChange={handleFilterChange}
+                    handlePriceFilterChange={handlePriceFilterChange}
+                    selectedPriceRange={selectedPriceRange}
+                />
 
                 <aside className='hidden w-full px-7  max-w-[250px] lg:flex flex-col w-full gap-5 items-start '>
                     {
@@ -124,7 +129,7 @@ const Products = () => {
                 {
                     filteredItems.length <= 0 ?
                         (
-                            <div className='flex justify-center mx-auto items-start text-lg '>
+                            <div className='flex justify-center mx-auto items-start text-lg py-24 '>
                                 Oops! no items found , please adjust your filters
 
                             </div>

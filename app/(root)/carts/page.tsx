@@ -35,7 +35,7 @@ const Cart = () => {
     }
     return (
         <section className='w-full h-screen mb-24'>
-            <div className='w-full  max-w-[1444px] flex flex-col xl:items-center gap-24 xl:flex-row xl:mx-auto xl:justify-between'>
+            <div className='w-full  max-w-[1444px] flex flex-col items-center gap-24 xl:flex-row xl:mx-auto xl:justify-between'>
                 {
                     orders.length <= 0 ? (
                         <div className='mx-auto text-xl'>
@@ -76,9 +76,9 @@ const Cart = () => {
 
                     <button disabled={Number(totalPrice) === 0} onClick={handleCheckout} className={`w-full bg-black text-light-100 font-semibold rounded-full 
                         py-5 self-center disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none disabled:border-gray-700 disabled:cursor-default 
-                        border-[0.5px] duration-300  cursor-pointer hover:text-dark-900 hover:bg-light-100`}>
+                        border-[0.5px] duration-300  cursor-pointer hover:text-dark-900 `}>
                         {
-                            isLoading ? (<ClipLoader size={20} />) : 'Proceed to Checkout '
+                            isLoading ? (<ClipLoader color='white' size={20} />) : 'Proceed to Checkout '
                         }
 
                     </button>

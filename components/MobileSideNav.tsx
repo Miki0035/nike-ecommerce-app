@@ -1,16 +1,23 @@
 "use client"
-import { sideNav, sideNavPrice } from '@/constants'
-import React, { useState } from 'react'
+import { allShoes, sideNav, sideNavPrice } from '@/constants'
+import React, { useMemo, useState } from 'react'
 import FilterOption from './FilterOption'
 import Image from "next/image"
 
-const MobileSideNav = () => {
+interface Props {
+    selectedFilters: string[];
+    selectedPriceRange: { min: number; max: number }[];
+    handleFilterChange: (value: string, checked: boolean) => void;
+    handlePriceFilterChange: (startingPrice: number, endingPrice: number | null, checked: boolean) => void;
+}
+
+const MobileSideNav = ({ selectedFilters, selectedPriceRange, handleFilterChange, handlePriceFilterChange }: Props) => {
     const [showSideNav, setShowSideNav] = useState(false)
     const [showPriceFilter, setShowPriceFilter] = useState(true)
 
     return (
         <div className={` flex py-2  lg:hidden absolute flex flex-col  -top-7 left-1 z-40 ${showSideNav ? 'bg-light-300 w-full h-screen' : 'w-20'}`}>
-            <button className={`cursor-pointer  transition-all md:mb-4  ${showSideNav ? 'translate-x-3/4 md:translate-x-5/6' : 'translate-x-0'} `} onClick={() => setShowSideNav(!showSideNav)}>
+            <button className={`cursor-pointer  duration-300 ease-in-out md:mb-4  ${showSideNav ? 'translate-x-3/4 md:translate-x-5/6' : 'translate-x-0'} `} onClick={() => setShowSideNav(!showSideNav)}>
                 <Image
                     src={showSideNav ? "/left-arrow.svg" : "/right-arrow.svg"}
                     alt={showSideNav ? 'left arrow' : 'right arrow'}
@@ -19,9 +26,10 @@ const MobileSideNav = () => {
                 />
             </button>
             <aside className={`${showSideNav ? 'flex' : 'hidden'} w-full px-2  mx-auto  flex-col gap-5 items-center`}>
+
                 {
                     sideNav.slice(0, 2).map(({ label, options }, index) => (
-                        <FilterOption key={index} label={label} options={options} borderStyle={index === 0 ? 'border-y-[0.5px]' : 'border-b-[0.5px]'} />
+                        <FilterOption selected={selectedFilters} onChange={handleFilterChange} key={index} label={label} options={options} borderStyle={index === 0 ? 'border-y-[0.5px]' : 'border-b-[0.5px]'} />
                     ))
                 }
 
@@ -40,20 +48,31 @@ const MobileSideNav = () => {
 
 
                         </div>
+                        {/* Price Filters */}
+
                         <ul className={`${showPriceFilter ? 'flex' : 'hidden'} flex-col items-start gap-4`}>
                             {
-                                sideNavPrice.options.map(({ startingPrice, endingPrice }, index) => (
-                                    <li key={index} className='flex gap-3 items-center'>
-                                        <input className='w-4 h-4' type='checkbox' value={startingPrice} />
-                                        {
-                                            index === sideNavPrice.options.length - 1 ? (
-                                                <span className='capitalise text-md'> Over  ${startingPrice} </span>
-                                            ) : (
-                                                <span className='capitalise text-md'> ${startingPrice} - ${endingPrice} </span>
-                                            )
-                                        }
-                                    </li>
-                                ))
+                                sideNavPrice.options.map(({ startingPrice, endingPrice }, index) => {
+                                    const isChecked = selectedPriceRange.some(
+                                        (range) =>
+                                            range.min === startingPrice &&
+                                            range.max === (endingPrice ?? Infinity)
+                                    );
+                                    return (
+                                        <li key={index} className='flex gap-3 items-center'>
+                                            <input className='w-4 h-4' type='checkbox' value={startingPrice} checked={isChecked}
+                                                onChange={(e) => handlePriceFilterChange(startingPrice, endingPrice ?? null, e.target.checked)}
+                                            />
+                                            {
+                                                index === sideNavPrice.options.length - 1 ? (
+                                                    <span className='capitalise text-md'> Over  ${startingPrice} </span>
+                                                ) : (
+                                                    <span className='capitalise text-md'> ${startingPrice} - ${endingPrice} </span>
+                                                )
+                                            }
+                                        </li>
+                                    )
+                                })
                             }
 
                         </ul>
@@ -61,7 +80,7 @@ const MobileSideNav = () => {
                 }
                 {
                     sideNav.slice(-1).map(({ label, options }, index) => (
-                        <FilterOption key={index} label={label} options={options} borderStyle={'border-none'} />
+                        <FilterOption selected={selectedFilters} onChange={handleFilterChange} key={index} label={label} options={options} borderStyle={'border-none'} />
                     ))
                 }
             </aside>
