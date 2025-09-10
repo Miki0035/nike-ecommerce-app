@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { useUserStore } from "./store/user";
 import { auth } from "./lib/auth";
 import { headers } from "next/headers";
 

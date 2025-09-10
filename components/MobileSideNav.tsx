@@ -1,6 +1,6 @@
 "use client"
-import { allShoes, sideNav, sideNavPrice } from '@/constants'
-import React, { useMemo, useState } from 'react'
+import {  sideNav, sideNavPrice } from '@/constants'
+import React, { useState } from 'react'
 import FilterOption from './FilterOption'
 import Image from "next/image"
 
