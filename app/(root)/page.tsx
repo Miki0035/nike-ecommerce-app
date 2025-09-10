@@ -23,7 +23,7 @@ const Page = () => {
           <p className='text-center text-md lg:text-left'>
             Not just style. Not just comfort. Footwear that effortlessly moves with your every step.
           </p>
-          <Link href={"/products"} className='bg-black  rounded-full text-light-100 px-5 py-3 font-semibold'>
+          <Link href={"/products"} className='bg-black  rounded-full text-light-100 px-5 py-3 font-semibold duration-300 border border-[0.5px] hover:bg-light-100 hover:text-dark-900'>
             Find Your Shoe
           </Link>
         </article>
@@ -57,7 +57,7 @@ const Page = () => {
             <div className='absolute top-5 md:top-14  left-2 md:left-8 flex flex-col items-start gap-3 lg:gap-5'>
               <h5 className='font-bold text-lg lg:text-5xl text-light-100 uppercase'>React Presto</h5>
               <p className='text-light-300 text-md lg:text-lg'>With React foam for the most comfortable Presto ever.</p>
-              <Link href={"/products"} className='bg-white text-dark-900  rounded-full  px-3 py-3 font-semibold'>
+              <Link href={"/products"} className='bg-white text-dark-900  rounded-full  px-3 py-3 font-semibold duration-300  hover:bg-dark-900 hover:text-light-100'>
                 Shop Now
               </Link>
             </div>
@@ -118,7 +118,7 @@ const Page = () => {
             Take advantage of brand new, proprietary cushioning technology with a fresh pair of Nike
             react shoes.
           </p>
-          <Link href={"/products"} className='bg-black  rounded-full text-light-100 px-5 py-3 font-semibold'>
+          <Link href={"/products"} className='bg-black  rounded-full text-light-100 px-5 py-3 font-semibold duration-300 border border-[0.5px] hover:bg-light-100 hover:text-dark-900'>
             Shop Now
           </Link>
         </article>

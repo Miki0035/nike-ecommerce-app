@@ -4,6 +4,7 @@ import { signIn } from '@/lib/auth-client'
 import { useFormDataStore } from '@/store/formData'
 import Link from 'next/link'
 import React, { FormEvent, useState } from 'react'
+import { ClipLoader } from "react-spinners"
 
 const SignIn = () => {
 
@@ -54,7 +55,7 @@ const SignIn = () => {
         {
           isLoading ? (
             <div>
-
+              <ClipLoader size={40} />
             </div>
           ) : (
             <>

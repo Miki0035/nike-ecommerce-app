@@ -232,7 +232,7 @@ export const allShoes: Shoe[] = [
     {
         id: 9,
         name: "Nike Dunk Low Retro SE",
-        type: "Dance",
+        type: "Lifestyle",
         image: "/shoes/shoe-7.avif",
         price: 98.30,
         colors: 6,

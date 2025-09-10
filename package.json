@@ -26,6 +26,7 @@
     "react-confetti": "^6.4.0",
     "react-dom": "19.1.0",
     "react-hot-toast": "^2.6.0",
+    "react-spinners": "^0.17.0",
     "stripe": "^18.5.0",
     "zustand": "^5.0.8"
   },
