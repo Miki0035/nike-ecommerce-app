@@ -33,7 +33,7 @@ const SignIn = () => {
     // const hashPassword = await bcrypt.hash(password, 10)
     setIsLoading(true)
     try {
-      const { data, error } = await signIn.email({
+      const { error } = await signIn.email({
         email,
         password,
         callbackURL: "/"

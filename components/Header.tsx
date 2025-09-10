@@ -13,6 +13,9 @@ const Header = () => {
     const router = useRouter()
     const { data: session } = useSession()
     const { orders } = useOrderStore()
+
+
+    
     const handleSignout = async () => {
         await signOut({
             fetchOptions: {

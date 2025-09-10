@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { ReactNode } from 'react'
 
-const layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
     const pathname = usePathname()
     const { data: session } = useSession()
     return (
@@ -43,4 +43,4 @@ const layout = ({ children }: { children: ReactNode }) => {
     )
 }
 
-export default layout
+export default Layout

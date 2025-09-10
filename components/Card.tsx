@@ -42,7 +42,7 @@ const Card = ({ id, description, name, price, type, colors, image, isFavorite }:
                     <p className='text-base font-semibold'>{name}</p>
                     <p className='text-base font-semibold'>${price}</p>
                 </div>
-                <h4 className='font-light text-md'>{type}'s Shoes</h4>
+                <h4 className='font-light text-md'>{type}&apos;s Shoes</h4>
                 <h5 className='font-light text-md'>{colors} Colour</h5>
             </div>
 

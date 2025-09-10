@@ -21,8 +21,8 @@ const ProductDetail = () => {
 
     const { name, price, description, type, image } = shoe
 
-    const { addOrder, orders } = useOrderStore()
-    const { addFavorite, favorites } = useFavoriteStore()
+    const { addOrder  } = useOrderStore()
+    const { addFavorite } = useFavoriteStore()
 
     
     const handleAddOrder = (shoe: Shoe) => {
