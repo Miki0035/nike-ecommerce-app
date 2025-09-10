@@ -47,7 +47,7 @@ const Products = () => {
 
             return matchesType && matchesPrice;
         });
-    }, [selectedFilters, selectedPriceRange, allShoes])
+    }, [selectedFilters, selectedPriceRange])
 
     return (
         <main className='w-full h-full max-w-[1444px] mx-auto'>

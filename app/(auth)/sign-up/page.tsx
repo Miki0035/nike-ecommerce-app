@@ -36,7 +36,7 @@ const SignUp = () => {
         // const hashPassword = await bcrypt.hash(password, 10)
         setIsLoading(true)
         try {
-            const { data, error } = await signUp.email({
+            const { error } = await signUp.email({
                 name: fullname,
                 email,
                 password,

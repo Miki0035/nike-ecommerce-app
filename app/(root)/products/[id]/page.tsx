@@ -12,19 +12,19 @@ import toast from 'react-hot-toast';
 const ProductDetail = () => {
 
     const params = useParams<{ id: string }>()
+    const { addFavorite } = useFavoriteStore()
+    const { addOrder } = useOrderStore()
+    const [size, setSize] = useState(0)
+
 
     const shoe = allShoes.find(shoe => shoe.id === Number(params.id))
-    const [size, setSize] = useState(0)
+
 
 
     if (!shoe) return (<main className='w-full max-w-[1444px] mx-auto h-full'> No Product Found</main>)
 
     const { name, price, description, type, image } = shoe
 
-    const { addOrder  } = useOrderStore()
-    const { addFavorite } = useFavoriteStore()
-
-    
     const handleAddOrder = (shoe: Shoe) => {
         addOrder({
             shoe, size,
@@ -47,7 +47,7 @@ const ProductDetail = () => {
                 {/* shoe description */}
                 <article className='w-full max-w-lg flex flex-col  items-start gap-3 py-4 lg:col-start-2 lg:row-start-1 '>
                     <h4 className='font-semibold  text-2xl'>{name}</h4>
-                    <h5 className='text-dark-500 text-lg'>{type}'s Shoes</h5>
+                    <h5 className='text-dark-500 text-lg'>{type}&apos;s Shoes</h5>
                     <p className='flex flex-col items-start gap-2'>
                         <span className='font-semibold text-3xl'>${price}</span>
                         <span className={`font-semibold text-lg ${description.startsWith("Extra") ? 'text-green' : 'text-red'}`}>{description}</span>
@@ -137,10 +137,10 @@ const ProductDetail = () => {
                 <Headline headline='You Might Also Like' />
                 <article className='w-full flex flex-col items-center lg:flex-row lg:justify-center gap-10'>
                     {
-                        bestAirMax.map(({ id, description, name, image, price, type, colors }, _) => (
+                        bestAirMax.map(({ id, description, name, image, price, type, colors }, index) => (
                             <Card
+                                key={index}
                                 id={id}
-                                key={id}
                                 description={description}
                                 name={name}
                                 price={price}

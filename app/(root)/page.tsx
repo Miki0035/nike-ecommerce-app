@@ -36,8 +36,8 @@ const Page = () => {
           {
             bestAirMax.map(({ id, description, name, image, price, type, colors }, index) => (
               <Card
+                key={index}
                 id={id}
-                key={id}
                 description={description}
                 name={name}
                 price={price}
