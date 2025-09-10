@@ -60,7 +60,7 @@ const SignIn = () => {
           ) : (
             <>
               <p className='text-base font-regular lg:text-lg'>
-                Don't have an account? <Link href={"/sign-up"} className='underline underline-offset-1 font-semibold text-md'>Sign Up</Link>
+                Don't have an account? <Link href={"/sign-up"} className='hover:underline  underline-offset-1 font-semibold text-md'>Sign Up</Link>
               </p>
               <h2 className='flex flex-col items-center font-bold text-3xl'>
                 Welcome Back!

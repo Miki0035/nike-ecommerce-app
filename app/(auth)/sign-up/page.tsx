@@ -68,7 +68,7 @@ const SignUp = () => {
                     ) : (
                         <>
                             <p className='text-base font-regular lg:text-lg'>
-                                Already have an account? <Link href={"/sign-in"} className='underline underline-offset-1 font-semibold text-md'>Sign In</Link>
+                                Already have an account? <Link href={"/sign-in"} className='hover:underline underline-offset-1 font-semibold text-md'>Sign In</Link>
                             </p>
                             <h2 className='flex flex-col items-center font-bold text-3xl'>
                                 Join Nike Today!

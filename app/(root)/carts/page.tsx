@@ -3,17 +3,20 @@ import { Headline } from '@/components'
 import OrderCard from '@/components/OrderCard'
 import { useOrderStore } from '@/store/cart'
 import { loadStripe } from '@stripe/stripe-js'
-import React from 'react'
+import React, { useState } from 'react'
+import { ClipLoader } from 'react-spinners'
 
 const Cart = () => {
+
+    const [isLoading, setIsLoading] = useState(false)
     const { orders } = useOrderStore()
 
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
-    const quantity = orders.reduce((acc, order) => acc + order.quantity, 0)
     const totalPrice = (orders.reduce((acc, order) => acc + order.shoe.price * order.quantity, 0)).toFixed(2)
 
     //STRIPE CHECKOUT
     const handleCheckout = async () => {
+        setIsLoading(true)
         try {
             const stripe = await stripePromise;
             const response = await fetch("/api/checkout", {
@@ -26,6 +29,8 @@ const Cart = () => {
             await stripe?.redirectToCheckout({ sessionId: session.id })
         } catch (error) {
             console.error("error browser checkout", error)
+        } finally {
+            setIsLoading(false)
         }
     }
     return (
@@ -72,7 +77,10 @@ const Cart = () => {
                     <button disabled={Number(totalPrice) === 0} onClick={handleCheckout} className={`w-full bg-black text-light-100 font-semibold rounded-full 
                         py-5 self-center disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none disabled:border-gray-700 disabled:cursor-default 
                         border-[0.5px] duration-300  cursor-pointer hover:text-dark-900 hover:bg-light-100`}>
-                        Proceed to Checkout
+                        {
+                            isLoading ? (<ClipLoader size={20} />) : 'Proceed to Checkout '
+                        }
+
                     </button>
 
                 </div>

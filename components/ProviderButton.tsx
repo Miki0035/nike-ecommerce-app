@@ -33,6 +33,7 @@ const ProviderButton = ({ icon, text, provider }: Props) => {
                 alt={icon}
                 width={30}
                 height={30}
+                className='group-hover:bg-light-100 rounded-full border-none'
             />
             <p className='font-medium text-base  group-hover:text-light-100'>
                 {text}

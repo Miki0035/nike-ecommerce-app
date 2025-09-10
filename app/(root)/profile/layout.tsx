@@ -16,7 +16,7 @@ const layout = ({ children }: { children: ReactNode }) => {
                     width={120}
                     height={120}
                     alt='profile'
-                    src={"/profile.png"}
+                    src={ session?.user.image ?? "/profile.png"}
                     className='w-40 h-30 rounded-full object-cover'
                 />
                 <div className='w-full flex flex-col gap-4'>
