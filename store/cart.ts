@@ -15,9 +15,23 @@ interface OrderStore {
 
 export const useOrderStore = create<OrderStore>((set) => ({
     orders: [],
-    addOrder: (order) => set((state) => ({
-        orders: [...state.orders, order]
-    })),
+    addOrder: (order) => set((state) => {
+        const existingIndex = state.orders.findIndex(
+            (o) => o.shoe.id === order.shoe.id && o.size === order.size
+        );
+        if (existingIndex !== -1) {
+            // Order already exists → update quantity
+            const updatedOrders = [...state.orders];
+            updatedOrders[existingIndex] = {
+                ...updatedOrders[existingIndex],
+                quantity: updatedOrders[existingIndex].quantity + order.quantity,
+            };
+            return { orders: updatedOrders };
+        }
+
+        // Order is new → add it
+        return { orders: [...state.orders, order] };
+    }),
     removeOrder: (id) => set((state) => ({
         orders: state.orders.filter((order) => order.shoe.id !== id)
     })),

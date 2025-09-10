@@ -8,4 +8,10 @@ interface Shoe {
     description: string;
 }
 
+interface Order {
+    shoe: Shoe;
+    size: number;
+    quantity: number;
+}
+
 

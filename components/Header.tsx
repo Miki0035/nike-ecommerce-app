@@ -7,6 +7,7 @@ import MobileNav from './MobileNav'
 import { useOrderStore } from '@/store/cart'
 import { signOut, useSession } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
+import { LogOut } from 'lucide-react'
 
 const Header = () => {
     const router = useRouter()
@@ -16,7 +17,7 @@ const Header = () => {
         await signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    router.push("/")
+                    router.push("/sign-in")
                 }
             }
         });
@@ -53,7 +54,7 @@ const Header = () => {
                     <ul className='lg:flex justify-center items-center gap-8'>
                         <li>
                             <button onClick={handleSignout} className=' cursor-pointer text-lg flex gap-2'>
-                                {session && "Logout"}
+                                {session && (<LogOut />)}
                             </button>
                         </li>
                         <li >

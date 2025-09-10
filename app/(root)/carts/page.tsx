@@ -2,12 +2,32 @@
 import { Headline } from '@/components'
 import OrderCard from '@/components/OrderCard'
 import { useOrderStore } from '@/store/cart'
+import { loadStripe } from '@stripe/stripe-js'
 import React from 'react'
 
 const Cart = () => {
     const { orders } = useOrderStore()
 
-    const totalPrice = orders.reduce((acc, order) => acc + order.shoe.price * order.quantity, 0)
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+    const quantity = orders.reduce((acc, order) => acc + order.quantity, 0)
+    const totalPrice = (orders.reduce((acc, order) => acc + order.shoe.price * order.quantity, 0)).toFixed(2)
+
+    //STRIPE CHECKOUT
+    const handleCheckout = async () => {
+        try {
+            const stripe = await stripePromise;
+            const response = await fetch("/api/checkout", {
+                method: "POST",
+                body: JSON.stringify({
+                    orders: [...orders],
+                })
+            })
+            const session = await response.json();
+            await stripe?.redirectToCheckout({ sessionId: session.id })
+        } catch (error) {
+            console.error("error browser checkout", error)
+        }
+    }
     return (
         <section className='w-full h-full mb-24'>
             <div className='w-full  max-w-[1444px] flex flex-col xl:items-center gap-24 xl:flex-row xl:mx-auto xl:justify-between'>
@@ -49,7 +69,7 @@ const Cart = () => {
                         <p className='text-xl'>${totalPrice}</p>
                     </div>
 
-                    <button className='w-full bg-black text-light-100 font-semibold rounded-full py-5 self-center  cursor-pointer'>
+                    <button onClick={handleCheckout} className='w-full bg-black text-light-100 font-semibold rounded-full py-5 self-center  cursor-pointer'>
                         Proceed to Checkout
                     </button>
 

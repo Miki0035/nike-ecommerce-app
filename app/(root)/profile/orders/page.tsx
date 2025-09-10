@@ -14,9 +14,9 @@ const Order = () => {
                             You have no orders
                         </div>
                     ) : (
-                        orders.map(({ shoe, size, quantity }) => (
+                        orders.map(({ shoe, size, quantity }, index) => (
                             <OrderCard
-                                key={shoe.id}
+                                key={index}
                                 name={shoe.name}
                                 type={shoe.type}
                                 price={shoe.price}

@@ -27,14 +27,14 @@ const ProviderButton = ({ icon, text, provider }: Props) => {
         <button
             onClick={() => handleSignInProvider(provider)}
             className='w-full border border-[0.5px] py-2 rounded-md 
-        border-light-300 flex justify-center gap-4 cursor-pointer '>
+        border-light-300 flex justify-center gap-4 cursor-pointer transition-all group hover:bg-dark-900 '>
             <Image
                 src={icon}
                 alt={icon}
                 width={30}
                 height={30}
             />
-            <p className='font-medium text-base'>
+            <p className='font-medium text-base  group-hover:text-light-100'>
                 {text}
             </p>
 
