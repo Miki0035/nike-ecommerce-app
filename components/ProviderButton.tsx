@@ -11,7 +11,6 @@ type Props = {
 
 const ProviderButton = ({ icon, text, provider }: Props) => {
     const handleSignInProvider = async (provider: string) => {
-        console.log(provider, 'provider sign in')
         try {
             await signIn.social({
                 provider,

@@ -49,7 +49,6 @@ const Products = () => {
         });
     }, [selectedFilters, selectedPriceRange, allShoes])
 
-    console.log('selected filters from page', selectedFilters)
     return (
         <main className='w-full h-full max-w-[1444px] mx-auto'>
             <section className='w-full flex justify-between items-center'>
