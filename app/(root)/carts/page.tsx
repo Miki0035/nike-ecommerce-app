@@ -76,7 +76,7 @@ const Cart = () => {
 
                     <button disabled={Number(totalPrice) === 0} onClick={handleCheckout} className={`w-full bg-black text-light-100 font-semibold rounded-full 
                         py-5 self-center disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none disabled:border-gray-700 disabled:cursor-default 
-                        border-[0.5px] duration-300  cursor-pointer hover:text-dark-900 `}>
+                        border-[0.5px] duration-300  cursor-pointer `}>
                         {
                             isLoading ? (<ClipLoader color='white' size={20} />) : 'Proceed to Checkout '
                         }

@@ -50,7 +50,7 @@ const Products = () => {
     }, [selectedFilters, selectedPriceRange])
 
     return (
-        <main className='w-full h-full max-w-[1444px] mx-auto'>
+        <main className='w-full max-w-[1444px] mx-auto'>
             <section className='w-full flex justify-between items-center'>
                 <Headline headline='New (500)' />
                 {/* <div className='hidden lg:flex gap-5'>
@@ -135,7 +135,7 @@ const Products = () => {
                             </div>
                         )
                         :
-                        <aside className='w-full max-w-7xl grid grid-cols-1 place-items-center py-4  md:grid-cols-2 xl:grid-cols-3 '>
+                        <aside className='w-full h-full max-w-7xl grid grid-cols-1 place-items-center py-4  md:grid-cols-2 xl:grid-cols-3 '>
                             {
 
                                 filteredItems.map(({ id, description, name, image, price, type, colors }) => (

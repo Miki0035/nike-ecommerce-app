@@ -50,7 +50,7 @@ const SignIn = () => {
     }
   }
   return (
-    <section className='bg-light-100 flex flex-col items-center max-w-5xl h-full w-full'>
+    <section className='bg-light-100 flex flex-col items-center max-w-5xl h-full w-full px-5'>
       <div className='max-w-lg w-full h-full flex flex-col items-center justify-center gap-5'>
         {
           isLoading ? (

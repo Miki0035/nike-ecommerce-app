@@ -1,5 +1,5 @@
 "use client"
-import {  sideNav, sideNavPrice } from '@/constants'
+import { sideNav, sideNavPrice } from '@/constants'
 import React, { useState } from 'react'
 import FilterOption from './FilterOption'
 import Image from "next/image"
@@ -16,8 +16,8 @@ const MobileSideNav = ({ selectedFilters, selectedPriceRange, handleFilterChange
     const [showPriceFilter, setShowPriceFilter] = useState(true)
 
     return (
-        <div className={` flex py-2  lg:hidden absolute flex flex-col  -top-7 left-1 z-40 ${showSideNav ? 'bg-light-300 w-full h-screen' : 'w-20'}`}>
-            <button className={`cursor-pointer  duration-300 ease-in-out md:mb-4  ${showSideNav ? 'translate-x-3/4 md:translate-x-5/6' : 'translate-x-0'} `} onClick={() => setShowSideNav(!showSideNav)}>
+        <div className={`-top-1 flex py-2  lg:hidden absolute flex flex-col transition-[width]  duration-700  h-screen  -top-7 left-1 z-40 ${showSideNav ? 'bg-light-300 w-full' : 'w-20'}`}>
+            <button className={`cursor-pointer transform transition-transform  duration-700 ease-in-out md:mb-4  ${showSideNav ? 'translate-x-3/4 md:translate-x-5/6' : 'translate-x-0'} `} onClick={() => setShowSideNav(!showSideNav)}>
                 <Image
                     src={showSideNav ? "/left-arrow.svg" : "/right-arrow.svg"}
                     alt={showSideNav ? 'left arrow' : 'right arrow'}
@@ -25,7 +25,7 @@ const MobileSideNav = ({ selectedFilters, selectedPriceRange, handleFilterChange
                     height={65}
                 />
             </button>
-            <aside className={`${showSideNav ? 'flex' : 'hidden'} w-full px-2  mx-auto  flex-col gap-5 items-center`}>
+            <aside className={`${showSideNav ? 'flex' : 'hidden'} w-full px-2  mx-auto  flex-col gap-5 items-center h-screen`}>
 
                 {
                     sideNav.slice(0, 2).map(({ label, options }, index) => (

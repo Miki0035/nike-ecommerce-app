@@ -20,9 +20,11 @@
 
   /* gradinet color */
   --gradient-purple-brown: linear-gradient(to right, var(--color-purple), var(--color-brown))
+    /* font family */
+    --font-jost: "Jost", sans-serif;
 
+}
 
-  /* font family */
-  --font-jost: "Jost", sans-serif;
-
+html {
+  scroll-behavior: smooth;
 }
