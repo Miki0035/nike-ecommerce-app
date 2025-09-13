@@ -16,7 +16,7 @@ const MobileSideNav = ({ selectedFilters, selectedPriceRange, handleFilterChange
     const [showPriceFilter, setShowPriceFilter] = useState(true)
 
     return (
-        <div className={`-top-1 flex py-2  lg:hidden absolute flex flex-col transition-[width]  duration-700  h-screen  -top-7 left-1 z-40 ${showSideNav ? 'bg-light-300 w-full' : 'w-20'}`}>
+        <div className={`-top-1 flex py-2  lg:hidden absolute flex flex-col transition-[width]  duration-700  h-[1200px]  left-1 z-40 ${showSideNav ? 'bg-light-300 w-full' : 'w-20'}`}>
             <button className={`cursor-pointer transform transition-transform  duration-700 ease-in-out md:mb-4  ${showSideNav ? 'translate-x-3/4 md:translate-x-5/6' : 'translate-x-0'} `} onClick={() => setShowSideNav(!showSideNav)}>
                 <Image
                     src={showSideNav ? "/left-arrow.svg" : "/right-arrow.svg"}

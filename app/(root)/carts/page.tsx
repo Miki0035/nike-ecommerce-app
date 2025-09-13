@@ -34,7 +34,7 @@ const Cart = () => {
         }
     }
     return (
-        <section className='w-full h-screen mb-24'>
+        <section className='w-full h-full mb-24'>
             <div className='w-full  max-w-[1444px] flex flex-col items-center gap-24 xl:flex-row xl:mx-auto xl:justify-between'>
                 {
                     orders.length <= 0 ? (
@@ -63,7 +63,7 @@ const Cart = () => {
 
                     )
                 }
-                <div className='w-80 w-96 h-full flex flex-col items-start gap-8'>
+                <div className='w-80 w-96 h-full flex flex-col items-start gap-8 px-5'>
                     <h5 className='text-2xl font-semibold'>Summary</h5>
                     <div className='w-full flex justify-between '>
                         <p className='text-xl'>Subtotal</p>

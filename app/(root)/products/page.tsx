@@ -50,7 +50,7 @@ const Products = () => {
     }, [selectedFilters, selectedPriceRange])
 
     return (
-        <main className='w-full max-w-[1444px] mx-auto'>
+        <main className='w-full h-full max-w-[1444px] mx-auto'>
             <section className='w-full flex justify-between items-center'>
                 <Headline headline='New (500)' />
                 {/* <div className='hidden lg:flex gap-5'>
