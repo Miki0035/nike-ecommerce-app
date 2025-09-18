@@ -1,8 +1,8 @@
-# Shoes
+# Shoes Ecommerce App
 
 <div align="center">
 
-![thumbnail](./assets/images/app-thumbnail.png)
+![thumbnail](/public/app-thumbnail.png)
 
 </div>
 
@@ -10,7 +10,9 @@
   <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js"/>
   <img src="https://img.shields.io/badge/Tailwind_CSS-grey?style=for-the-badge&logo=tailwind-css&logoColor=38B2AC" alt="TailwindCSS"/>
   <img src="https://img.shields.io/badge/-Stripe-008CDD?style=flat&logo=stripe&logoColor=white" alt="Stripe"/>
-  <img src="https://img.shields.io/badge/-Stripe-008CDD?style=flat&logo=stripe&logoColor=white" alt="Stripe"/>
+  <img src="https://img.shields.io/badge/Better--Auth-secure-green" alt="Better Auth"/>
+  <img src="https://img.shields.io/badge/Zustand-state%20management-blue" alt="Zustand"/>
+  <img src="https://img.shields.io/badge/Drizzle-ORM-orange" alt="Drizzle"/>
 
 </p>
 
